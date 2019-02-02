@@ -84,9 +84,6 @@ public class ClientController {
 		try {
 			List<ClientDTO> allClients = service.getAllClients();
 			response = Response.status(Response.Status.OK).entity(allClients).build();
-		} catch (IdNotFoundException id) {
-			logger.error(id.getMessage());
-			response = Response.status(Response.Status.NOT_FOUND).entity(id.getMessage()).build();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();

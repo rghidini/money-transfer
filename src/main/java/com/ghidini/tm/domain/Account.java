@@ -48,6 +48,13 @@ public class Account implements Serializable{
 		this.clientId = clientId;
 		this.amount = amount;
 	}
+	
+	/**
+	 * @param amount
+	 */
+	public Account(BigDecimal amount) {
+		this.amount = amount;
+	}
 
 	/**
 	 * 
