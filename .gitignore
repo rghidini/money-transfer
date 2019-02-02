@@ -1,23 +1,65 @@
-# Compiled class file
 *.class
+.DS_Store
+.metadata
+.settings
+.classpath
+.project
+target/
+bin/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
-# Log file
-*.log
+# compiled output
+/dist
+/tmp
+/out-tsc
 
-# BlueJ files
-*.ctxt
+# dependencies
+/node_modules
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+yarn-error.log
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+.tmp
+.DS_Store
+.DS_Store?
+.dpl/
+./vscode
+client/.vscode
+server/.vscode
+server/node_modules
+client/node_modules
+client/typings
+client/app/**/*.js
+client/app/**/*.map
+client/npm-debug.log
+server/npm-debug.log
