@@ -50,9 +50,6 @@ public class TransactionController {
 		try {
 			List<TransactionDTO> allTransactions = service.getAllTransaction();
 			response = Response.status(Response.Status.OK).entity(allTransactions).build();
-		} catch (IdNotFoundException id) {
-			logger.error(id.getMessage());
-			response = Response.status(Response.Status.NOT_FOUND).entity(id.getMessage()).build();
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();

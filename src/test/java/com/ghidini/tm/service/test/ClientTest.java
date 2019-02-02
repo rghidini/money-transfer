@@ -17,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.ghidini.tm.dao.interfaces.IClientDAO;
+import com.ghidini.tm.dao.ClientDAO;
 import com.ghidini.tm.domain.Client;
 import com.ghidini.tm.domain.dto.ClientDTO;
 import com.ghidini.tm.service.ClientService;
@@ -29,7 +29,7 @@ public class ClientTest {
 	private ClientService service;
 	
 	@Mock
-	private IClientDAO clientDao;
+	private ClientDAO clientDao;
 
 	@Before
 	public void init() {
