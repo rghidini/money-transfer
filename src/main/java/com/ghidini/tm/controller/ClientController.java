@@ -13,6 +13,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.log4j.Logger;
+
 import com.ghidini.tm.domain.Client;
 import com.ghidini.tm.domain.dto.ClientDTO;
 import com.ghidini.tm.exceptions.IdNotFoundException;
@@ -22,6 +24,8 @@ import com.ghidini.tm.service.ClientService;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ClientController {
+	
+	private static final Logger logger = Logger.getLogger(ClientController.class);
 
 	private ClientService service = new ClientService();
 
@@ -33,6 +37,7 @@ public class ClientController {
 			service.addClient(client);
 			response = Response.status(Response.Status.CREATED).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -46,8 +51,10 @@ public class ClientController {
 			service.deleteClient(id);
 			response = Response.status(Response.Status.OK).build();
 		} catch (IdNotFoundException e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -61,8 +68,10 @@ public class ClientController {
 			ClientDTO client = service.findClientById(id);
 			response = Response.status(Response.Status.FOUND).entity(client).build();
 		} catch (IdNotFoundException e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -76,8 +85,10 @@ public class ClientController {
 			List<ClientDTO> allClients = service.getAllClients();
 			response = Response.status(Response.Status.OK).entity(allClients).build();
 		} catch (IdNotFoundException id) {
+			logger.error(id.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(id.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -91,8 +102,10 @@ public class ClientController {
 			service.updateClient(id, client);
 			response = Response.status(Response.Status.OK).build();
 		} catch (IdNotFoundException e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;

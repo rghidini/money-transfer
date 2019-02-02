@@ -12,6 +12,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.apache.log4j.Logger;
+
 import com.ghidini.tm.domain.Account;
 import com.ghidini.tm.domain.dto.AccountDTO;
 import com.ghidini.tm.exceptions.IdNotFoundException;
@@ -21,6 +23,8 @@ import com.ghidini.tm.service.AccountService;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AccountController {
+	
+	private static final Logger logger = Logger.getLogger(AccountController.class);
 
 	private AccountService service = new AccountService();
 
@@ -32,6 +36,7 @@ public class AccountController {
 			service.addAccount(account);
 			response = Response.status(Response.Status.CREATED).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -45,8 +50,10 @@ public class AccountController {
 			service.deleteAccount(id);
 			response = Response.status(Response.Status.OK).build();
 		} catch (IdNotFoundException e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -60,8 +67,10 @@ public class AccountController {
 			AccountDTO account = service.findAccountById(id);
 			response = Response.status(Response.Status.FOUND).entity(account).build();
 		} catch (IdNotFoundException e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
@@ -75,8 +84,10 @@ public class AccountController {
 			List<AccountDTO> allAccounts= service.getAllAccounts();
 			response = Response.status(Response.Status.OK).entity(allAccounts).build();
 		} catch (IdNotFoundException id) {
+			logger.error(id.getMessage());
 			response = Response.status(Response.Status.NOT_FOUND).entity(id.getMessage()).build();
 		} catch (Exception e) {
+			logger.error(e.getMessage());
 			response = Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
 		return response;
