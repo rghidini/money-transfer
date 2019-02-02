@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-import javax.annotation.PostConstruct;
-
 import org.apache.commons.lang3.math.NumberUtils;
 import org.jvnet.hk2.annotations.Service;
 
@@ -28,13 +26,11 @@ public class AccountService implements IAccountService{
 	private AccountDAO accountDao = new AccountDAO();
 
 	@Override
-	@PostConstruct
 	public void addAccount(Account account) {
 		accountDao.insert(new Account(verifyId(account.getClientId()), verifyAmount(account.getAmount())));
 	}
 
 	@Override
-	@PostConstruct
 	public AccountDTO findAccountById(Long id) {
 		AccountDTO accountDto = null;
 		Account account = verifyAccount(verifyId(id));
@@ -43,7 +39,6 @@ public class AccountService implements IAccountService{
 	}
 
 	@Override
-	@PostConstruct
 	public List<AccountDTO> getAllAccounts() {
 		List<AccountDTO> listAccountsDto = new ArrayList<>();
 		Optional.ofNullable(accountDao.findAll())
@@ -55,15 +50,13 @@ public class AccountService implements IAccountService{
 	}
 
 	@Override
-	@PostConstruct
 	public void deleteAccount(Long id) {
 		accountDao.delete(verifyAccount(verifyId(id)).getAccountId());
 	}
 
 	@Override
-	@PostConstruct
 	public void updateAccount(Long id, Account account) {
-		accountDao.update(verifyAccount(verifyId(account.getAccountId())));		
+		accountDao.update(new Account(verifyAccount(verifyId(id)).getAccountId(), verifyId(account.getClientId()), verifyAmount(account.getAmount())));		
 	}
 
 	private Long verifyId(Long id) {

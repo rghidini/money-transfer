@@ -12,6 +12,7 @@ import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
 
+import com.ghidini.tm.domain.Transaction;
 import com.ghidini.tm.domain.dto.TransactionDTO;
 import com.ghidini.tm.exceptions.IdNotFoundException;
 import com.ghidini.tm.service.TransactionService;
@@ -27,7 +28,7 @@ public class TransactionController {
 
 	@POST
 	@Path("/do")
-	public Response doTransaction(TransactionDTO transaction) {
+	public Response doTransaction(Transaction transaction) {
 		Response response = null;
 		try {
 			service.addTransaction(transaction);
@@ -43,7 +44,7 @@ public class TransactionController {
 	}
 
 	@GET
-	@Path("/getAll")
+	@Path("/")
 	public Response getAllTransactions() {
 		Response response = null;
 		try {

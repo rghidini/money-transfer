@@ -2,7 +2,6 @@ package com.ghidini.tm.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,38 +32,28 @@ public class Transaction implements Serializable{
 	@Column(name = "AMOUNT", nullable = false)
 	private BigDecimal amount;
 	
-	@Column(name = "DT_TRANSACTION", nullable = false, columnDefinition = "DATETIME")
-	private LocalDateTime transactionDate;
-	
-
 	/**
 	 * @param transactionId
 	 * @param fromAccountId
 	 * @param toAccountId
 	 * @param amount
-	 * @param transactionDate
 	 */
-	public Transaction(Long transactionId, Long fromAccountId, Long toAccountId, BigDecimal amount,
-			LocalDateTime transactionDate) {
+	public Transaction(Long transactionId, Long fromAccountId, Long toAccountId, BigDecimal amount) {
 		this.transactionId = transactionId;
 		this.fromAccountId = fromAccountId;
 		this.toAccountId = toAccountId;
 		this.amount = amount;
-		this.transactionDate = transactionDate;
 	}
 	
 	/**
 	 * @param fromAccountId
 	 * @param toAccountId
 	 * @param amount
-	 * @param transactionDate
 	 */
-	public Transaction(Long fromAccountId, Long toAccountId, BigDecimal amount,
-			LocalDateTime transactionDate) {
+	public Transaction(Long fromAccountId, Long toAccountId, BigDecimal amount) {
 		this.fromAccountId = fromAccountId;
 		this.toAccountId = toAccountId;
 		this.amount = amount;
-		this.transactionDate = transactionDate;
 	}
 	
 
@@ -129,27 +118,13 @@ public class Transaction implements Serializable{
 		this.amount = amount;
 	}
 
-	/**
-	 * @return the transactionDate
-	 */
-	public LocalDateTime getTransactionDate() {
-		return transactionDate;
-	}
-
-	/**
-	 * @param transactionDate the transactionDate to set
-	 */
-	public void setTransactionDate(LocalDateTime transactionDate) {
-		this.transactionDate = transactionDate;
-	}
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "Transaction [transactionId=" + transactionId + ", fromAccountId=" + fromAccountId + ", toAccountId="
-				+ toAccountId + ", amount=" + amount + ", transactionDate=" + transactionDate + "]";
+				+ toAccountId + ", amount=" + amount + "]";
 	}
 	
 }

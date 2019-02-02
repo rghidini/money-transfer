@@ -2,7 +2,6 @@ package com.ghidini.tm.domain.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 public class TransactionDTO implements Serializable{
 
@@ -14,20 +13,17 @@ public class TransactionDTO implements Serializable{
 
 	private BigDecimal amount;
 
-	private LocalDateTime transactionDate;
 
 	/**
 	 * @param fromAccountId
 	 * @param toAccountId
 	 * @param amount
-	 * @param transactionDate
 	 */
-	public TransactionDTO(Long fromAccountId, Long toAccountId, BigDecimal amount, LocalDateTime transactionDate) {
+	public TransactionDTO(Long fromAccountId, Long toAccountId, BigDecimal amount) {
 		super();
 		this.fromAccountId = fromAccountId;
 		this.toAccountId = toAccountId;
 		this.amount = amount;
-		this.transactionDate = transactionDate;
 	}
 
 	/**
@@ -72,20 +68,5 @@ public class TransactionDTO implements Serializable{
 		this.amount = amount;
 	}
 
-	/**
-	 * @return the transactionDate
-	 */
-	public LocalDateTime getTransactionDate() {
-		return transactionDate;
-	}
-
-	/**
-	 * @param transactionDate the transactionDate to set
-	 */
-	public void setTransactionDate(LocalDateTime transactionDate) {
-		this.transactionDate = transactionDate;
-	}
-	
-	
 
 }

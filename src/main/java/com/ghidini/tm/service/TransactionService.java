@@ -1,7 +1,6 @@
 package com.ghidini.tm.service;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,7 +31,7 @@ public class TransactionService implements ITransactionService{
 
 
 	@Override
-	public void addTransaction(TransactionDTO transaction) {
+	public void addTransaction(Transaction transaction) {
 
 		if(Objects.equals(transaction.getFromAccountId(), transaction.getToAccountId())) {
 			throw new IllegalArgumentException(SAME_ACCOUNTS);
@@ -60,7 +59,7 @@ public class TransactionService implements ITransactionService{
 		accountService.updateAccount(transaction.getToAccountId(), new Account(toAccount.getClientId(), toAccount.getAmount()));
 
 		transactionDao.insert(new Transaction(transaction.getFromAccountId(), transaction.getToAccountId(), 
-				transaction.getAmount(), LocalDateTime.now()));
+				transaction.getAmount()));
 		
 	}
 
@@ -72,7 +71,7 @@ public class TransactionService implements ITransactionService{
 		.stream()
 		.filter(Objects::nonNull)
 		.forEach(transaction -> listTransactionsDto.add(new TransactionDTO(transaction.getFromAccountId(), transaction.getToAccountId(), 
-				transaction.getAmount(), transaction.getTransactionDate())));
+				transaction.getAmount())));
 		return listTransactionsDto;
 	}
 
