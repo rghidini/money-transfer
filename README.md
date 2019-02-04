@@ -39,7 +39,7 @@ METHOD: PUT
 CONTENT-TYPE: application/json
 BODY: 
 {
-  "clientName":"Example", 
+  "clientName":"Example"
 }
 ```
 #### Delete client by id
