@@ -39,7 +39,7 @@ METHOD: PUT
 CONTENT-TYPE: application/json
 BODY: 
 {
-	"clientName":"Example", 
+  "clientName":"Example"
 }
 ```
 #### Delete client by id
@@ -67,8 +67,8 @@ METHOD: POST
 CONTENT-TYPE: application/json
 BODY: 
 {
-	"clientId":1, 
-	"amount":100
+  "clientId":1, 
+  "amount":100
 }
 ```
 #### Delete an account by id
@@ -92,9 +92,9 @@ METHOD: POST
 CONTENT-TYPE: application/json
 BODY: 
 {
-	"fromAccountId":2, 
-	"toAccountId":1, 
-	"amount":90
+  "fromAccountId":2, 
+  "toAccountId":1, 
+  "amount":90
 }
 ```
 
