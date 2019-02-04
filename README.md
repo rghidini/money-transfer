@@ -77,9 +77,9 @@ URL: /account/delete/{id}
 METHOD: DELETE
 ```
 
-###Transfer Services
+### Transfer Services
 
-####List all transfers
+#### List all transfers
 ```
 URL: /transaction/getAll
 METHOD: GET
