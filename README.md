@@ -1,28 +1,28 @@
-#money-transfer
+# money-transfer
 Java RESTFul API to transfer money between accounts - Revolut Backend Test
 
-##Frameworks Used
+## Frameworks Used
 1. JAX-RS
 2. Log4j2
 3. H2 in memory DB
 4. JUnit for testing
 
-##Services
+## Services
 The API consists in 3 services. One to manage clients (CRUD), one to manage accounts (CRUD) and one to List/Make transfers. It runs on port 8080 and the available services are the following.
 
-###Client Services
+### Client Services
 
-####List all clients
+#### List all clients
 ```
 URL: /client/
 METHOD: GET
 ```
-####Find client by id
+#### Find client by id
 ```
 URL: /client/{id}
 METHOD: GET
 ```
-####Create a client
+#### Create a client
 ```
 URL: /client/add
 METHOD: POST
@@ -32,7 +32,7 @@ BODY:
   "clientName": "Example"
 }
 ```
-####Update a client
+#### Update a client
 ```
 URL: /client/update/{id}
 METHOD: PUT
@@ -42,25 +42,25 @@ BODY:
 	"clientName":"Example", 
 }
 ```
-####Delete client by id
+#### Delete client by id
 ```
 URL: /client/delete/{id}
 METHOD: DELETE
 ```
 
-###Account Services
+### Account Services
 
-####List all accounts
+#### List all accounts
 ```
 URL: /account/
 METHOD: GET
 ```
-####Find account by id
+#### Find account by id
 ```
 URL: /account/{id}
 METHOD: GET
 ```
-####Create an account
+#### Create an account
 ```
 URL: /account/add
 METHOD: POST
@@ -71,7 +71,7 @@ BODY:
 	"amount":100
 }
 ```
-####Delete an account by id
+#### Delete an account by id
 ```
 URL: /account/delete/{id}
 METHOD: DELETE
@@ -85,7 +85,7 @@ URL: /transaction/getAll
 METHOD: GET
 ```
 
-####Make a transfer between accounts
+#### Make a transfer between accounts
 ```
 URL: /transaction/do
 METHOD: POST
@@ -98,7 +98,7 @@ BODY:
 }
 ```
 
-##How to use/run
+## How to use/run
 
 Although the API is provided with JUnit tests, the best way to take a look at the API is to run it with some of the following command and then use examples shown above.
 
